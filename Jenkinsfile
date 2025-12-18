@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Sonar') {
             steps {
-                sh "./gradlew -D https.proxyHost=proxy1-rech -D https.proxyPort=3128 sonar -Dsonar.projectKey=TpJenkins -Dsonar.projectName='TpJenkins' -Dsonar.host.url=http://172.17.0.1:9000 -Dsonar.token=sqp_1bd9a625c499a4931a695365972027c23c161cd1"
+                sh "./gradlew -D https.proxyHost=proxy1-rech -D https.proxyPort=3128 sonar -Dsonar.projectKey=tp-gipf -Dsonar.projectName='tp-gipf' -Dsonar.host.url=http://172.17.0.1:9000 -Dsonar.token=sqp_8ed37c4fb23351cf619c21e27eafb27610036624"
             }
         }
         stage('Jar') {
