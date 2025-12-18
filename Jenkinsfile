@@ -1,5 +1,16 @@
 pipeline {
     agent any
+
+    node {
+      stage('SCM') {
+        checkout scm
+      }
+      stage('SonarQube Analysis') {
+        withSonarQubeEnv() {
+          sh "./gradlew sonar"
+        }
+      }
+    }
     
     environment {
         DOCKER_IMAGE = "jenkins-demo-app"
