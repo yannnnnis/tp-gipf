@@ -11,15 +11,17 @@
 plugins {
     id 'org.liquibase.gradle' version '2.2.0'
     id "org.sonarqube" version "7.2.0.6526"
+    id "jacoco"
 }
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'org.sonarqube'
 
-sonar {
-  properties {
-    property "sonar.projectKey", "tp-gipf"
-    property "sonar.projectName", "tp-gipf"
-  }
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -30,6 +32,8 @@ repositories {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -47,4 +51,15 @@ jar {
     manifest {
         attributes 'Main-Class': 'gipf.Main'
     }
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "TpJenkins"
+    property "sonar.projectName", "TpJenkins"
+  }
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
