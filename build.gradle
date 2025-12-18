@@ -13,6 +13,14 @@ plugins {
     id "org.sonarqube" version "7.2.0.6526"
     id "jacoco"
 }
+
+sonar {
+  properties {
+    property "sonar.projectKey", "tp-gipf"
+    property "sonar.projectName", "tp-gipf"
+  }
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'org.sonarqube'
