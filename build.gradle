@@ -63,8 +63,8 @@ jar {
 
 sonarqube {
   properties {
-    property "sonar.projectKey", "TpJenkins"
-    property "sonar.projectName", "TpJenkins"
+    property "sonar.projectKey", "tp-gipf"
+    property "sonar.projectName", "tp-gipf"
   }
 }
 
